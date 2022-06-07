@@ -20,14 +20,14 @@
 ## z坐标正负颠倒
    框架中的z坐标是遵循越大越远，越小越近的，和PPT和虎书上叙述不符  
    修改方法：  
-      1.将get_projection_martix的  
+      1.将get_projection_martix的
       ```
-      float t = zNear*tan(eye_fov/2*MY_PI/180);  
+      float t = zNear*tan(eye_fov/2*MY_PI/180);
       ```  
       改为  
       ```
-      float t = -zNear*tan(eye_fov/2*MY_PI/180);  
-      ```
+      float t = -zNear*tan(eye_fov/2*MY_PI/180);
+      ```  
       2.光栅化作zbuffer时遵循越小越远，越大越近的原则，如果z插值结果大于depth buffer则应予以保留  
       3.rasterizer.cpp中rasterizer::clear函数作深度缓冲初始化时，将初始值设为负无穷(最远)，而不是正无穷。
 ## rasterizerize_triangle透视投影矫正不起作用
