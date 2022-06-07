@@ -1,7 +1,7 @@
 # 101hw3_tiny-render-pipeline
 ## 使用说明
-本程序是Games101课程的作业3，实现了一个小的渲染管线。编译后通过传入不同的参数可使用不同的shader，如  
-  ./Rasterizer output.png texture
+本程序是Games101课程的作业3，实现了一个小的渲染管线。编译后通过传入不同的参数可使用不同的shader，如    
+    ./Rasterizer output.png texture  
 即为使用代码中的 texture shader  
 同理，可选的参数有texture,phong,bump,displacement.  
 运行结果如下  
@@ -14,5 +14,5 @@
 实现移位贴图displacement mapping  
 ![output_displacement](https://user-images.githubusercontent.com/50654768/172327430-5ec73fec-077f-4b9f-ada0-5bf9ad5f0bf3.png)  
 
-## 存在的问题及修复情况：
-# z坐标正负颠倒
+# 存在的问题及修复情况：
+## z坐标正负颠倒
