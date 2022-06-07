@@ -18,4 +18,17 @@
 
 # 存在的问题及修复情况：
 ## z坐标正负颠倒
-   
+   框架中的z坐标是遵循越大越远，越小越近的，和PPT和虎书上叙述不符  
+   修改方法：  
+      1.将get_projection_martix的
+      ```
+      float t = zNear*tan(eye_fov/2*MY_PI/180);
+      ```
+      改为
+      ```
+      float t = -zNear*tan(eye_fov/2*MY_PI/180);
+      ```
+      2.光栅化作zbuffer时遵循越小越远，越大越近的原则，如果z插值结果大于depth buffer则应予以保留
+      3.rasterizer.cpp中rasterizer::clear函数作深度缓冲初始化时，将初始值设为负无穷(最远)，而不是正无穷。
+## rasterizerize_triangle透视投影矫正不起作用
+   这里由于toVector4()的存在，t的w坐标永远为1，所以相当于没进行透视投影矫正，按理说经过mvp变换后的坐标w值应该加以利用，但是在上一个draw函数里面提前归一化了。如果想改的话应该从上一个draw函数开始改，由于时间原因我尚未修改，修改之后会做相应更新
