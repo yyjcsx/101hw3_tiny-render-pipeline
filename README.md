@@ -23,7 +23,7 @@
       1.将get_projection_martix的  
       ```
       float t = zNear*tan(eye_fov/2*MY_PI/180);  
-      ```
+      ```  
       改为  
       ```
       float t = -zNear*tan(eye_fov/2*MY_PI/180);  
